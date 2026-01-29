@@ -1,7 +1,7 @@
 # SAMMBA
 R scripts, FIJI macros, protocols and sample images to perform SAMMBA 
 
-SAMBBA (Seaweed Automatable Microplate Microscopy for Breeding Approaches) is a high throughput isolation, phenotyping and biobanking pipeline for macroalgal gametophytes and sporophytes using fluorescence microscopy and image based analysis.
+SAMMBA (Seaweed Automatable Microplate Microscopy for Breeding Approaches) is a high throughput isolation, phenotyping and biobanking pipeline for macroalgal gametophytes and sporophytes using fluorescence microscopy and image based analysis.
 
 ## Contents
 - ImageJ macros for segmentation and fluorescence quantification
