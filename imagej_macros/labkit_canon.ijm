@@ -86,16 +86,18 @@ startTime = getTime();
 	well = line2[2];
 
 	//Create path to modify the name of the segmented image and results
-    segmentedPath = outputDir + date + "_" + well + "_" + img + "_segmented";
+
+segmentedPath_zip = outputDir + "zip/"+ date + "_" + img + "_segmented";
+segmentedPath_res = outputDir + "results/" + date + "_" + img + "_segmented";
     
 				// apply labkit model
    					run("Segment Image With Labkit", "segmenter_file=" + labkitModelDir + " use_gpu=false");
-   					saveAs("ZIP", segmentedPath);
+   					saveAs("ZIP", segmentedPath_zip);
 					close();
 close();	
 
 //Open segmented image and analyze
-  open(segmentedPath + ".zip");
+  open(segmentedPath_zip + ".zip");
 
 wait(1000);
 
@@ -112,7 +114,7 @@ wait(1000);
    
 					//save as zip to compress and save metadata
 
-						saveAs("Results", segmentedPath + "_Results.csv");
+						saveAs("Results", segmentedPath_res + "_Results.csv");
    
     print("Saved Image and Results: " + segmentedPath);
     print("i = " + i);
