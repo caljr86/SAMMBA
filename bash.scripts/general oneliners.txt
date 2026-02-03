@@ -1,0 +1,6 @@
+copy all folders from server excluding some		rsync -av --exclude '*/raw/' --exclude '*/croped/' --exclude '*/segmented/zip/' gareth@10.36.4.90:/media/Disk1/brigitta/*plate* .
+copy all.csv files from an upper folder			rsync -av --exclude='*/raw/***' --exclude='*/croped/***' --include='*/' --include='*/segmented/*.csv' --exclude='*' gareth@10.36.4.90:/media/Disk1/brigitta/ .
+rename files from 1 to n				ls | cat -n | while read n f; do mv "$f" `printf "DSC_%04d.JPG" $n`; done
+transfer files from server to your pc.			rsync -av gareth@10.36.4.90:/media/Disk1/myrsini/384plates/plate1/251118/segmented/*.csv .
+transfer a file to a directory	 			scp gareth@10.36.4.90:/media/Disk1/brigitta/plate4/plate_design_vsi.csv .
+erase just a slot between "_" from all files name	for f in *_segmented_Results.csv; do mv "$f" "${f/_20251205/}"; done
