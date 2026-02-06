@@ -27,16 +27,18 @@ print("Processing folder: " + date);
 // Check or reorder the folders according to your preferred organization
 
 root = "/media/Disk1/user1/";
+experiment = "breeding/";
+
 //Input folder
-raw = root + plate + "/" + date + "/raw/";
+raw = root + experiment + plate + "/" + date + "/raw/";
 // Output cropped raw images
-cropped = root + plate + "/" + date + "/cropped/";
+cropped = root + experiment + plate + "/" + date + "/cropped/";
 //Output path for segmented images
-outputDir = root + plate + "/" + date + "/segmented/";
+outputDir = root + experiment + plate + "/" + date + "/segmented/";
 //Input path for LabKit model
 labkitModelDir = root + "script/"+ model;
 //Input path for plate_design.csv file
-design_path = root + plate + "/plate_design.csv";
+design_path = root + experiment + plate + "/plate_design.csv";
 
 //Open plate design file
 design = File.openAsString(design_path);
@@ -45,7 +47,7 @@ design = File.openAsString(design_path);
 wells = split(design, "\n");
 
 //Get list of all files and folders in raw path
-list1 = getFileList(raw);
+list = getFileList(raw);
 
 
 // Record the start time
@@ -85,10 +87,10 @@ startTime = getTime();
 	line2 = split(line, ",");
 	well = line2[2];
 
-	//Create path to modify the name of the segmented image and results
+	//Create path to modify the name of the segmented image and results, including the right well according to design file
 
-segmentedPath_zip = outputDir + "zip/"+ date + "_" + img + "_segmented";
-segmentedPath_res = outputDir + "results/" + date + "_" + img + "_segmented";
+segmentedPath_zip = outputDir + "zip/"+ date + "_" + img + "_" + well + "_segmented";
+segmentedPath_res = outputDir + "results/" + date + "_" + img + "_" + well + "_segmented";
     
 				// apply labkit model
    					run("Segment Image With Labkit", "segmenter_file=" + labkitModelDir + " use_gpu=false");
@@ -110,6 +112,7 @@ wait(1000);
 						wait(1000);
 
    				// Get count and area of particles using 5um as lower threshold
+//Change this threshold based on previous analysis.
 					run("Analyze Particles...", "size=5-Infinity display");
    
 					//save as zip to compress and save metadata
