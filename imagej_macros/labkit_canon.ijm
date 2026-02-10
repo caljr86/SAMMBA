@@ -69,19 +69,16 @@ startTime = getTime();
 							makeRectangle(978, 18, 4440, 4142);
 								run("Crop");
 							saveAs("ZIP", cropped + fileName);
+							 img0 = getTitle();
   								close("*");
   
 				// Segmenting and analyzing with LabKit 
 
-	//Create objects to change file names when opening
-   img0 = IJ.pad(i+1, 4);
-   img1 = "IMG_" + img0 + ".zip";
-  
+ 
 	//Open cropped images and remove the extensions
-   open(cropped + img1);
-    img = replace(img1, ".tif", "");
-    img = replace(img1, ".zip", "");
-    
+       img1 = replace(img0, ".tif", ".zip");
+   		open(cropped + img1);
+
     //Get the well name from list according to image sequence
     line = wells[i+1];
 	line2 = split(line, ",");
