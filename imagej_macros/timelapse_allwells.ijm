@@ -2,7 +2,7 @@ plate = "plate56";
 
 //Input folder
 
-root = "/home/cicero/Dropbox/1_posdoc/1_CCMAR/experiments/384WP/growthrate/";
+root = "/home/path/to/image/folder";
 outputDir = root + plate + "/stacked_aligned/";
 	
 //Input path for plate_design.csv file
@@ -27,13 +27,17 @@ for(w = 0; w < wells.length; w++) {
 	croped = root + plate + "/" + date + "/croped/";
 		
 				open(croped + filename1);
+		
+			//Downscale images
 				run("Scale...", "x=0.1 y=0.1 width=444 height=414 interpolation=Bilinear average create");
 				close(filename + ".tif");
 }
 
+//Make stacks
 run("Images to Stack", "use");
 selectImage("Stack");
 
+//Align
 run("Linear Stack Alignment with SIFT", "initial_gaussian_blur=1.60 steps_per_scale_octave=3 minimum_image_size=64 " +
 	"maximum_image_size=1024 feature_descriptor_size=4 feature_descriptor_orientation_bins=8 closest/next_closest_ratio=0.92 " +
 	"maximal_alignment_error=25 inlier_ratio=0.05 expected_transformation=Rigid interpolate");
