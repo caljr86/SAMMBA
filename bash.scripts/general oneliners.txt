@@ -5,3 +5,4 @@ transfer files from server to your pc.			      rsync -av gareth@10.36.4.90:/medi
 transfer a file to a directory	 			              scp gareth@10.36.4.90:/media/Disk1/brigitta/plate4/plate_design_vsi.csv .
 erase just a slot between "_" from all files name	    for f in *_segmented_Results.csv; do mv "$f" "${f/_20251205/}"; done
 transfer only .csv from all folders from server        rsync -av --exclude='*/raw/' --include='*.csv' --include='*/' --exclude='*' gareth@10.36.4.90:/media/Disk2/cicero/plate63/ .
+get the last line of all .csv in a folder          for f in *.csv; do echo -n "$f: "; tail -n 1 "$f"; done > last_line_all.csv
