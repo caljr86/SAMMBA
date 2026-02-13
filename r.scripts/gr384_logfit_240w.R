@@ -27,7 +27,7 @@ for (plt in c(1:20)) { #Define here the plates that you want to analyze. Separat
 plate <- paste0("plate", plt)
 
 #Set working directory for each plate
-setwd(paste0(getwd(), "/", plate, "/"))
+setwd(paste0(getwd(), "/", plate))
 output <- paste0(getwd(), "/")
 
 #Set plate design objects
@@ -58,10 +58,10 @@ date <- unlist(strsplit(f, "/"))[2]
   img <- cbind(date1, metadata2, area)
   
   #Rename columns
-  colnames(img) <- c("date", "row", "col", "well", "photo", # Standard columns
-                    "temperature", "sex", "strain", "plate", # Variable columns. Depends on experiments
+   colnames(img) <- c("date", 
+                     names(metadata2), # Variable columns. Depends on experiments
                      "gametophyte", "area") #Measurements column. May vary too.
-  
+  colnames(img)[colnames(img) %in% c("ROW", "COLUMN", "WELL", "PHOTO")] <- c("row", "col", "well", "photo")
   gc384 <- rbind(gc384, img)
 }
 }
