@@ -21,4 +21,4 @@ SAMMBA (Seaweed Automatable Microplate Microscopy for Breeding Approaches) is a 
 4. Data processing and visualization
 
 ## Citation
-Please cite: Alves-Lima, 2025. Algal Research. doi: 
+Please cite: Alves-Lima, 2025. Algal Research. doi: https://doi.org/10.1016/j.algal.2026.104547
