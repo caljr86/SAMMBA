@@ -4,7 +4,7 @@
 // Record the start time
 startTime = getTime();
 
-//Type images date
+//Type mode file name
 model = "plate1.classifier";
 
 //Add inside the brackets the folder(s) you want to analyse
