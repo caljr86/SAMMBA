@@ -57,7 +57,7 @@ startTime = getTime();
 
 		// In this part of the loop you can change the "0" and "list.length" by any number according to the total number of files
 			for (i = 0; i < list.length; i++) {
-  				fileName = list1[i];
+  				fileName = list[i];
   
    	 			// Open each image and duplicate for croping and scaling
     				open(raw + fileName);
