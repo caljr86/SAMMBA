@@ -45,7 +45,7 @@ design = File.openAsString(design_path);
 wells = split(design, "\n");
 
 //Get list of all files and folders in raw path
-list1 = getFileList(raw);
+list = getFileList(raw);
 
 
 // Record the start time
@@ -55,7 +55,7 @@ startTime = getTime();
 
 		// In this part of the loop you can change the "0" and "list.length" by any number according to the total number of files
 			for (i = 0; i < list.length; i++) {
-  				fileName = list1[i];
+  				fileName = list[i];
 
 run("Bio-Formats Importer", "open="+ raw + fileName + " color_mode=Default rois_import=[ROI manager]"+
 " view=Hyperstack stack_order=XYCZT series_1");
